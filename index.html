@@ -16,10 +16,10 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #7f00ff, #e100ff);
-      color: white;
+      background-color: #121212;
+      color: #e0e0e0;
       min-height: 100vh;
-      scroll-padding-top: 100px; /* fixed header 높이만큼 스크롤 위치 보정 */
+      scroll-padding-top: 100px;
     }
     header {
       position: fixed;
@@ -30,7 +30,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      background: rgba(0, 0, 0, 0.1);
+      background: #1e1e1e;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
       z-index: 1000;
       backdrop-filter: blur(10px);
       box-sizing: border-box;
@@ -39,13 +40,19 @@
     header h1 {
       font-size: 24px;
       margin: 0;
+      color: #e0e0e0;
     }
     nav a {
       margin: 0 12px;
-      color: white;
+      color: #bbbbbb;
       text-decoration: none;
       font-weight: 500;
       font-size: 16px;
+      transition: color 0.3s;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #bb86fc;
     }
     .hero {
       display: flex;
@@ -55,10 +62,12 @@
       box-sizing: border-box;
       flex-wrap: wrap;
       gap: 20px;
+      background: #1f1f1f;
+      border-radius: 12px;
     }
     .hero img {
       width: 100%;
-      max-width: 400px;
+      max-width: 350px; /* 이미지 크기 줄임 */
       border-radius: 20px;
       flex-shrink: 0;
     }
@@ -70,36 +79,47 @@
     .hero-text h2 {
       font-size: 36px;
       margin-bottom: 20px;
+      color: #bb86fc;
     }
     .hero-text p {
       font-size: 16px;
       line-height: 1.6;
+      color: #cccccc;
     }
     .btn {
       margin-top: 20px;
       padding: 12px 24px;
-      background-color: #fff;
-      color: #7f00ff;
+      background-color: #bb86fc;
+      color: #121212;
       font-weight: bold;
       border: none;
       border-radius: 25px;
       cursor: pointer;
       font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .btn:hover {
+      background-color: #9a65d6;
+      color: #fff;
     }
     section {
       padding: 40px 30px;
       box-sizing: border-box;
       max-width: 1000px;
       margin: 0 auto 60px;
+      background: #181818;
+      border-radius: 12px;
+      color: #e0e0e0;
     }
     .project {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
+      background: #252525;
+      border-radius: 12px;
       padding: 30px;
       margin-bottom: 30px;
     }
     .project h3 {
       margin-top: 0;
+      color: #bb86fc;
     }
     .tab-buttons {
       display: flex;
@@ -111,21 +131,21 @@
 
     .tab-btn {
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.15);
+      background: #2c2c2c;
       border: none;
       border-radius: 20px;
-      color: white;
+      color: #bbb;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s;
       font-size: 14px;
       white-space: nowrap;
     }
 
     .tab-btn:hover,
     .tab-btn.active {
-      background: white;
-      color: #7f00ff;
+      background: #bb86fc;
+      color: #121212;
     }
 
     .tab-content {
@@ -164,6 +184,7 @@
         padding: 80px 20px 40px;
         flex-direction: column;
         text-align: center;
+        margin: 80px 20px 40px;
       }
       .hero-text {
         max-width: 100%;
@@ -179,11 +200,13 @@
         padding: 10px 20px;
       }
       .hero img {
-        max-width: 100%;
+        max-width: 80%;
         border-radius: 15px;
+        margin: 0 auto;
       }
       section {
         padding: 30px 20px;
+        margin: 0 20px 40px;
       }
       .tab-buttons {
         gap: 10px;
@@ -191,6 +214,17 @@
       .tab-btn {
         font-size: 12px;
         padding: 8px 15px;
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   </style>
