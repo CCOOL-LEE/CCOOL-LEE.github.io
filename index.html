@@ -14,12 +14,18 @@
       color: white;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: rgba(0,0,0,0.1);
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(0,0,0,0.1);
+  z-index: 1000; /* 다른 요소 위에 표시되도록 */
+  backdrop-filter: blur(10px); /* 유리처럼 흐리게 (선택사항) */
+}
     header h1 {
       font-size: 28px;
     }
@@ -29,12 +35,12 @@
       text-decoration: none;
       font-weight: 500;
     }
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 60px;
-    }
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 140px 60px 80px; /* 상단 패딩을 더 줌 (기존 80px → 140px) */
+}
     .hero img {
       width: 40%;
       border-radius: 20px;
@@ -122,7 +128,7 @@
     </nav>
   </header>
 
-<section class="hero">
+<section id="about" class="hero">
     <div class="hero-text animate__animated animate__fadeInLeft">
       <h2>현장에서 단련된 실무 개발자</h2>
       <p>WinForms 기반의 HMI 시스템부터 웹 백엔드까지 다양한 경험을 통해 현업의 문제를 기술로 해결해왔습니다. 협업, 리팩토링, 교육까지 주도한 경험이 있습니다.</p>
