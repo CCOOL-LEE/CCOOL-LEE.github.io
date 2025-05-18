@@ -1,60 +1,78 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>이시원 포트폴리오</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to right, #7f00ff, #e100ff);
       color: white;
+      min-height: 100vh;
+      scroll-padding-top: 100px; /* fixed header 높이만큼 스크롤 위치 보정 */
     }
     header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  background: rgba(0,0,0,0.1);
-  z-index: 1000; /* 다른 요소 위에 표시되도록 */
-  backdrop-filter: blur(10px); /* 유리처럼 흐리게 (선택사항) */
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-sizing: border-box;
+      height: 60px;
+    }
     header h1 {
-      font-size: 28px;
+      font-size: 24px;
+      margin: 0;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 12px;
       color: white;
       text-decoration: none;
       font-weight: 500;
+      font-size: 16px;
     }
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 140px 60px 80px; /* 상단 패딩을 더 줌 (기존 80px → 140px) */
-}
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 100px 30px 60px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
     .hero img {
-      width: 40%;
+      width: 100%;
+      max-width: 400px;
       border-radius: 20px;
+      flex-shrink: 0;
     }
     .hero-text {
-      max-width: 50%;
+      max-width: 600px;
       animation: fadeInLeft 1s;
+      flex: 1 1 300px;
     }
     .hero-text h2 {
-      font-size: 48px;
+      font-size: 36px;
       margin-bottom: 20px;
     }
     .hero-text p {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.6;
     }
     .btn {
@@ -66,12 +84,16 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
+      font-size: 16px;
     }
     section {
-      padding: 60px;
+      padding: 40px 30px;
+      box-sizing: border-box;
+      max-width: 1000px;
+      margin: 0 auto 60px;
     }
     .project {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 15px;
       padding: 30px;
       margin-bottom: 30px;
@@ -80,42 +102,97 @@
       margin-top: 0;
     }
     .tab-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
 
-  .tab-btn {
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+    .tab-btn {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 14px;
+      white-space: nowrap;
+    }
 
-  .tab-btn:hover,
-  .tab-btn.active {
-    background: white;
-    color: #7f00ff;
-  }
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: white;
+      color: #7f00ff;
+    }
 
-  .tab-content {
-    display: none;
-  }
+    .tab-content {
+      display: none;
+    }
 
-  .tab-content.active {
-    display: block;
-    animation: fadeIn 0.5s ease-in-out;
-  }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+        height: 50px;
+      }
+      header h1 {
+        font-size: 20px;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+      .hero {
+        padding: 80px 20px 40px;
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text {
+        max-width: 100%;
+      }
+      .hero-text h2 {
+        font-size: 28px;
+      }
+      .hero-text p {
+        font-size: 14px;
+      }
+      .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+      .hero img {
+        max-width: 100%;
+        border-radius: 15px;
+      }
+      section {
+        padding: 30px 20px;
+      }
+      .tab-buttons {
+        gap: 10px;
+      }
+      .tab-btn {
+        font-size: 12px;
+        padding: 8px 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -128,73 +205,77 @@
     </nav>
   </header>
 
-<section id="about" class="hero">
+  <section id="about" class="hero">
     <div class="hero-text animate__animated animate__fadeInLeft">
       <h2>현장에서 단련된 실무 개발자</h2>
-      <p>WinForms 기반의 HMI 시스템부터 웹 백엔드까지 다양한 경험을 통해 현업의 문제를 기술로 해결해왔습니다. 협업, 리팩토링, 교육까지 주도한 경험이 있습니다.</p>
+      <p>
+        WinForms 기반의 HMI 시스템부터 웹 백엔드까지 다양한 경험을 통해
+        현업의 문제를 기술로 해결해왔습니다. 협업, 리팩토링, 교육까지 주도한
+        경험이 있습니다.
+      </p>
       <button class="btn" onclick="scrollToProjects()">프로젝트 보기</button>
     </div>
-    <img src="mnt/data/dev.png" alt="작업 이미지" class="animate__animated animate__fadeInRight">
+    <img
+      src="mnt/data/dev.png"
+      alt="작업 이미지"
+      class="animate__animated animate__fadeInRight"
+    />
   </section>
-  <!-- 프로젝트 섹션 -->
-<section id="projects">
-  <h2 class="animate__animated animate__fadeInUp">주요 프로젝트</h2>
 
-  <!-- 탭 버튼 -->
-  <div class="tab-buttons">
-    <button class="tab-btn active" data-tab="hmi">📘 HMI 시스템</button>
-    <button class="tab-btn" data-tab="web">🌐 웹 백엔드</button>
-    <button class="tab-btn" data-tab="maintenance">🛠 시스템 유지보수</button>
-  </div>
+  <section id="projects">
+    <h2 class="animate__animated animate__fadeInUp">주요 프로젝트</h2>
 
-  <!-- 탭 콘텐츠: HMI -->
-  <div class="tab-content active" id="hmi">
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>HMI 시스템 프론트엔드 개발</h3>
-      <p>C# WinForms 기반. UI 레이아웃 설계, 컨트롤 구현, UserControl 생성.</p>
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="hmi">📘 HMI 시스템</button>
+      <button class="tab-btn" data-tab="web">🌐 웹 백엔드</button>
+      <button class="tab-btn" data-tab="maintenance">🛠 시스템 유지보수</button>
     </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>HMI 시스템 백엔드 및 MSMQ</h3>
-      <p>CRUD, 클래스 관리, MSMQ 기반 통신 구현 및 유지보수.</p>
-    </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>서버 Task 프로그램 프로토타입</h3>
-      <p>기존 서버 코드 리팩토링 및 신규 Task 프로그램 개발.</p>
-    </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>Git 협업 환경 구축 및 교육</h3>
-      <p>Git 도입, 브랜치 전략, 시니어/신입 대상 Git 교육 실시.</p>
-    </div>
-  </div>
 
-  <!-- 탭 콘텐츠: 웹 백엔드 -->
-  <div class="tab-content" id="web">
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>공주대 입학 시스템</h3>
-      <p>Spring MVC 기반 백엔드. 테이블 설계, 관리자 기능, 데이터 이관 수행.</p>
+    <div class="tab-content active" id="hmi">
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>HMI 시스템 프론트엔드 개발</h3>
+        <p>C# WinForms 기반. UI 레이아웃 설계, 컨트롤 구현, UserControl 생성.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>HMI 시스템 백엔드 및 MSMQ</h3>
+        <p>CRUD, 클래스 관리, MSMQ 기반 통신 구현 및 유지보수.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>서버 Task 프로그램 프로토타입</h3>
+        <p>기존 서버 코드 리팩토링 및 신규 Task 프로그램 개발.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>Git 협업 환경 구축 및 교육</h3>
+        <p>Git 도입, 브랜치 전략, 시니어/신입 대상 Git 교육 실시.</p>
+      </div>
     </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>국가 마우스 표현형 분석 시스템</h3>
-      <p>Spring Boot, iBatis 기반. 관리자 기능 개발 및 유지보수.</p>
-    </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>제주43, 대구대 등 웹사이트 유지보수</h3>
-      <p>기능 개선 및 백엔드 유지보수.</p>
-    </div>
-  </div>
 
-  <!-- 탭 콘텐츠: 시스템 유지보수 -->
-  <div class="tab-content" id="maintenance">
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>운용보수 - VB & PostgreSQL</h3>
-      <p>8개 거래처 시스템 관리, 오류 처리 및 데이터 유지보수.</p>
+    <div class="tab-content" id="web">
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>공주대 입학 시스템</h3>
+        <p>Spring MVC 기반 백엔드. 테이블 설계, 관리자 기능, 데이터 이관 수행.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>국가 마우스 표현형 분석 시스템</h3>
+        <p>Spring Boot, iBatis 기반. 관리자 기능 개발 및 유지보수.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>제주43, 대구대 등 웹사이트 유지보수</h3>
+        <p>기능 개선 및 백엔드 유지보수.</p>
+      </div>
     </div>
-    <div class="project animate__animated animate__fadeInUp">
-      <h3>WatchDog 시스템 개발</h3>
-      <p>윈도우 기반 에러 탐지 도구. 1인 개발로 안정성 확보.</p>
+
+    <div class="tab-content" id="maintenance">
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>운용보수 - VB & PostgreSQL</h3>
+        <p>8개 거래처 시스템 관리, 오류 처리 및 데이터 유지보수.</p>
+      </div>
+      <div class="project animate__animated animate__fadeInUp">
+        <h3>WatchDog 시스템 개발</h3>
+        <p>윈도우 기반 에러 탐지 도구. 1인 개발로 안정성 확보.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="contact">
     <h2>연락처</h2>
@@ -204,25 +285,22 @@
 
   <script>
     function scrollToProjects() {
-      document.getElementById("projects").scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     }
-  </script>
-  <script>
-  const buttons = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // 버튼 상태 초기화
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+    const buttons = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
 
-      // 콘텐츠 전환
-      contents.forEach(c => c.classList.remove("active"));
-      const targetId = btn.dataset.tab;
-      document.getElementById(targetId).classList.add("active");
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        contents.forEach((c) => c.classList.remove('active'));
+        const targetId = btn.dataset.tab;
+        document.getElementById(targetId).classList.add('active');
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
